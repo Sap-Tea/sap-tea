@@ -6,6 +6,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    
 
     <script>
         function compararValor() {
@@ -62,12 +63,14 @@
     <!-- Conteúdo principal -->
     <div class="page">
         <!-- Imagem à esquerda -->
-        <img src="public/img/sap_logo2.png" alt="Imagem representativa" id="minhaImagem">
+        <img src="{{ asset('img/sap_logo2.png') }}" alt="Imagem representativa">
+
         
         <!-- Card de Login -->
         <div class="formLogin">
-            <img src="public/img/logo_sap.png" alt="Imagem de Login" class="logoSap">
+        <img src="{{ asset('img/logo_sap.png') }}" alt="Imagem de Login" class="logoSap">
 
+            
 
             <label for="usuario">Usuário</label>
             <input type="text" name="usuario" id="usuario" placeholder="Digite seu usuário" autofocus>

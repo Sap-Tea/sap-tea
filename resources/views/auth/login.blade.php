@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     
+    
     <style>
         body {
     background-image: url('{{ asset("img/tela_azul.jpg") }}'); /* Caminho da imagem de fundo em Laravel */
@@ -81,6 +82,19 @@
     </script>
 </head>
 <body>
+
+ <!-- Barra de navegação -->
+ <div class="navbar">
+        <a href="https://wa.me/5511992312745" target="_blank" style="text-decoration: none; color: inherit;">
+            <strong>Não consegue acessar sua conta?</strong> Entre em contato com o suporte 
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 20px; height: 20px; margin-left: 5px; vertical-align: middle;">
+            <span style="font-weight: bold;">+55 11 99231-2745</span>
+        </a>
+        
+        </a>
+        </a>
+        
+    </div>
     <div class="page">
         <img src="{{ asset('img/sap_logo2.png') }}" alt="Imagem representativa">
         <div class="formLogin">

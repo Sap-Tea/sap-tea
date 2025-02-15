@@ -9,19 +9,6 @@ html, body {
     overflow: hidden;
 }
 
-body {
-    background-image: url('{{ asset("img/tela_azul.jpg") }}'); /* Caminho da imagem de fundo em Laravel */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
 html, body {
     height: 100%;
     overflow: auto; /* Permite rolagem na página */
@@ -37,7 +24,7 @@ html, body {
 
 .navbar {
     
-    background-color: #fbfbfb; /* Cor de fundo da barra */
+    background-color: #eeeff6; /* Cor de fundo da barra */
     display: flex;
     justify-content: flex-end;
     align-items: center;

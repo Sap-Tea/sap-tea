@@ -40,4 +40,7 @@ Route::get('/tabelas', function () {
   $tabelas = DB::select('SHOW TABLES');
   return response()->json($tabelas);
 });
- 
+use App\Http\Controllers\SondagemController;
+
+Route::get('/sondagem-inicial', [SondagemController::class, 'index'])->name('sondagem.inicial');
+

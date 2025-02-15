@@ -1,0 +1,53 @@
+ 
+.horizontal-bar {
+width: calc(100% - 270px); /* Reduz a largura para deixar espaço nas laterais */
+margin: 20px 20px; /* Adiciona espaçamento no topo e nas laterais */
+background-color: #d9e6f7; /* Cor de fundo */
+padding: 16px 20px; /* Espaçamento interno */
+color: #49537e; /* Cor do texto */
+font-family: Arial, sans-serif;
+display: flex;
+justify-content: space-between; /* Espaço entre os itens */
+align-items: center; /* Alinhamento vertical */
+position: fixed; /* Fixa no topo */
+top: 10px; /* Espaçamento do topo */
+left: 260px; /* Espaçamento em relação à sidebar */
+z-index: 1000; /* Mantém acima de outros elementos */
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+border-radius: 10px; /* Bordas arredondadas */
+}
+
+
+/* Logo */
+.horizontal-bar .logo {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.horizontal-bar .menu {
+display: flex;
+gap: 10px; /* Espaçamento entre os links */
+margin-right: 35px; /* Espaçamento da borda direita */
+}
+
+
+.horizontal-bar .menu a {
+  text-decoration: none;
+  color: #49537e;
+  font-size: 14px;
+}
+
+.horizontal-bar .menu a:hover {
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d9e6f7;
+  border-radius: 10px;
+}

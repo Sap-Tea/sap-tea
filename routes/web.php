@@ -44,3 +44,22 @@ use App\Http\Controllers\SondagemController;
 
 Route::get('/sondagem-inicial', [SondagemController::class, 'index'])->name('sondagem.inicial');
 
+
+Route::get('/formulario', function () {
+  return view('formulario');
+})->name('formulario.view');
+
+Route::post('/formulario-submit', function (Request $request) {
+  // Processar os dados do formulário aqui
+  return back()->with('success', 'Formulário enviado com sucesso!');
+})->name('formulario.submit');
+
+use App\Http\Controllers\SondagemInicialController;
+
+Route::prefix('sondagem')->group(function () {
+    Route::get('/inicial', [SondagemInicialController::class, 'inicial'])->name('sondagem.inicial');
+    Route::get('/continuada1', [SondagemInicialController::class, 'continuada1'])->name('sondagem.continuada1');
+    Route::get('/continuada2', [SondagemInicialController::class, 'continuada2'])->name('sondagem.continuada2');
+    Route::get('/final', [SondagemInicialController::class, 'final'])->name('sondagem.final');
+});
+

@@ -78,6 +78,28 @@ body {
     padding: 0;
 }
 
+.sidebar ul li a {
+    color: #2b3687; /* Define a cor azul para os links do menu */
+}
+
+.sidebar ul li a:hover {
+    color: #db7a19; /* Cor mais escura ao passar o mouse */
+}
+.sidebar h2 {
+    text-align: center; /* Centraliza o texto */
+    width: 100%; /* Garante que o elemento ocupe toda a largura disponível */
+}
+.menu-logo {
+    text-align: center; /* Centraliza a logo */
+    margin-bottom: 10px; /* Espaço entre a logo e o texto "Menu" */
+}
+
+.menu-logo img {
+    width: 100px; /* Ajuste o tamanho da logo conforme necessário */
+    height: auto;
+}
+
+
 .sidebar a {
     color: #131212;
     text-decoration: none;
@@ -89,6 +111,8 @@ body {
 .sidebar a:hover {
     background-color: #dcdcdc;
 }
+
+
 
 .submenu_escola,
 .submenu_matriculas,

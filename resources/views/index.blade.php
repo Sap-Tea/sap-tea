@@ -39,19 +39,22 @@
 
     
     
-    <h2>Menu</h2>
-        <ul>
-            <li><a href="#" data-target="formulario-cad-escola"><i class="fa-solid fa-school"></i> Sondagem Pedagógica ⬇️ </a>
-                <ul class="submenu_escola">
-                    <li><a href="" data-target= "sondagem-inicial">.1 Inicial</a></li>
-                    <li><a href="#" data-target="modalidade-ensino">.2 Continuada</a></li>
-                    <li><a href="#" data-target="modalidade-ensino">.3 Continuada</a></li>
-                    <li><a href="#" data-target="modalidade-ensino">.4 Final</a></li>
-               
-                </ul>
-            </li>
+    <div class="menu-logo">
+    <img src="{{ asset('img/logo_sap.png') }}" alt="Logo">
+
+</div>
+<ul>
+    <li>
+        <a href="#" class="menu-toggle"><i class="fa-solid fa-school"></i> Sondagem Pedagógica ⬇️ </a>
+        <ul class="submenu">
+            <li><a href="{{ route('sondagem.inicial') }}" class="menu-link">.1 Inicial</a></li>
+            <li><a href="{{ route('sondagem.continuada1') }}" class="menu-link">.2 Continuada</a></li>
+            <li><a href="{{ route('sondagem.continuada2') }}" class="menu-link">.3 Continuada</a></li>
+            <li><a href="{{ route('sondagem.final') }}" class="menu-link">.4 Final</a></li>
         </ul>
-        <ul>
+    </li>
+</ul>
+
             <li><a href="#" data-target="formulario-cad-escola"><i class="fa-solid fa-school"></i> Rotina e Monitoramento ⬇️ </a>
                 <ul class="submenu_escola">
                     <li><a href="#" data-target="modalidade-ensino">.1 Inicial</a></li>

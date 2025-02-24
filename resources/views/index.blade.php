@@ -57,7 +57,8 @@
 
             <li><a href="#" data-target="formulario-cad-escola"><i class="fa-solid fa-school"></i> Rotina e Monitoramento ⬇️ </a>
                 <ul class="submenu_escola">
-                    <li><a href="#" data-target="modalidade-ensino">.1 Inicial</a></li>
+                <li><a href="{{ route('modalidade.inicial') }}">.1 Inicial</a></li>
+
                     <li><a href="#" data-target="modalidade-ensino">.2 Continuada</a></li>
                     <li><a href="#" data-target="modalidade-ensino">.3 Continuada</a></li>
                     <li><a href="#" data-target="modalidade-ensino">.4 Final</a></li>
@@ -74,6 +75,19 @@
                     <li><a href="#" data-target="modalidade-ensino">.4 Final</a></li>
                
                 </ul>
+
+                <li>
+                <a href="{{ route('perfil.estudante') }}" target="_blank">
+    <i class="fa-solid fa-graduation-cap"></i> Perfil do Estudante
+</a>
+
+  </a>
+</li>
+
+
+
+
+
             </li>
         </ul>
         <h2>Cadastros</h2>

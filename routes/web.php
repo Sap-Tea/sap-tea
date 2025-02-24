@@ -63,3 +63,13 @@ Route::prefix('sondagem')->group(function () {
     Route::get('/final', [SondagemInicialController::class, 'final'])->name('sondagem.final');
 });
 
+use App\Http\Controllers\PerfilEstudanteController;
+
+Route::get('/perfil-estudante', [PerfilEstudanteController::class, 'index'])->name('perfil.estudante');
+Route::post('/perfil-estudante/salvar', [PerfilEstudanteController::class, 'store'])->name('perfil.estudante.salvar');
+
+use App\Http\Controllers\EnsinoController;
+
+Route::get('/modalidade-ensino/inicial', [EnsinoController::class, 'inicial'])->name('modalidade.inicial');
+
+

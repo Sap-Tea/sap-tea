@@ -4,6 +4,7 @@
 */
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ControllerPerfil;
 
 
 
@@ -42,6 +43,7 @@ Route::get('/tabelas', function () {
 });
 use App\Http\Controllers\SondagemController;
 
+
 Route::get('/sondagem-inicial', [SondagemController::class, 'index'])->name('sondagem.inicial');
 
 
@@ -56,10 +58,25 @@ Route::post('/formulario-submit', function (Request $request) {
 
 use App\Http\Controllers\SondagemInicialController;
 
+Route::group(['prefix' => 'professor'], function () {
+  Route::get('/imprime-aluno', [ControllerPerfil::class, 'imprimeAluno'])->name('aluno.perfil');
+});
+
+
 Route::prefix('sondagem')->group(function () {
     Route::get('/inicial', [SondagemInicialController::class, 'inicial'])->name('sondagem.inicial');
     Route::get('/continuada1', [SondagemInicialController::class, 'continuada1'])->name('sondagem.continuada1');
     Route::get('/continuada2', [SondagemInicialController::class, 'continuada2'])->name('sondagem.continuada2');
     Route::get('/final', [SondagemInicialController::class, 'final'])->name('sondagem.final');
 });
+
+use App\Http\Controllers\PerfilEstudanteController;
+
+Route::get('/perfil-estudante', [PerfilEstudanteController::class, 'index'])->name('perfil.estudante');
+Route::post('/perfil-estudante/salvar', [PerfilEstudanteController::class, 'store'])->name('perfil.estudante.salvar');
+
+use App\Http\Controllers\EnsinoController;
+
+Route::get('/modalidade-ensino/inicial', [EnsinoController::class, 'inicial'])->name('modalidade.inicial');
+
 

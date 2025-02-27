@@ -242,6 +242,36 @@
                 <textarea rows="3"></textarea>
             </div>
            
+            <div class="form-group">
+                <label>Apresenta seletividade alimentar?</label>
+                <select>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label>Alimentos preferidos:</label>
+                <textarea rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Alimentos que evita:</label>
+                <textarea rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Com quem tem mais afinidade na escola (professores,colegas)?Identifique</label>
+                <textarea rows="3"></textarea>
+            </div>
+              <div class="form-group">
+                <label>Como reage no contato com novas pessoas ou situaçõess</label>
+                <textarea rows="3"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+          <label>O que ajuda e o que dificulta sua interação na escola?</label>
+          <textarea rows="3"></textarea>
+      </div>
 
 
 

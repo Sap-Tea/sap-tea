@@ -4,6 +4,7 @@
 */
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ControllerPerfil;
 
 
 
@@ -42,6 +43,7 @@ Route::get('/tabelas', function () {
 });
 use App\Http\Controllers\SondagemController;
 
+
 Route::get('/sondagem-inicial', [SondagemController::class, 'index'])->name('sondagem.inicial');
 
 
@@ -55,6 +57,11 @@ Route::post('/formulario-submit', function (Request $request) {
 })->name('formulario.submit');
 
 use App\Http\Controllers\SondagemInicialController;
+
+Route::group(['prefix' => 'professor'], function () {
+  Route::get('/imprime-aluno', [ControllerPerfil::class, 'imprimeAluno'])->name('aluno.perfil');
+});
+
 
 Route::prefix('sondagem')->group(function () {
     Route::get('/inicial', [SondagemInicialController::class, 'inicial'])->name('sondagem.inicial');

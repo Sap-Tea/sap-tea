@@ -661,8 +661,8 @@ input[type="radio"]:hover {
 
         <br>
         <div class="btn-container">
-    <button class="btn btn-primary">Primário</button>
-    <button class="btn btn-secondary">Secundário</button>
+    <button class="btn btn-primary">Cancelar</button>
+    <button class="btn btn-secondary">Imprimir</button>
     <a href="{{ route('index') }}" class="btn btn-danger">Cancelar</a>
 
 </div>

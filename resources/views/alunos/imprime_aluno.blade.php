@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('content')
 <div class="container mt-4">
     <h2>Relação dos alunos</h2>
@@ -37,8 +36,9 @@
                     <td>{{ $aluno->alu_tel_resp }}</td>
                     <td>{{ $aluno->alu_email_resp }}</td>
                     <td>
-                        <a href="{{ urloj_foccus/views/forms/formulario-edt-aluno.php?edit=' . $aluno->alu_id) }}"
-                           class="btn btn-warning btn-sm">Editar</a>('/pr
+                        <!-- Botão Editar -->
+                        <a href="{{ url('/proj_foccus/views/forms/formulario-edt-aluno.php?edit=' . $aluno->alu_id) }}"
+                           class="btn btn-warning btn-sm">Editar</a>
                     </td>
                 </tr>
             @empty
@@ -51,23 +51,34 @@
 
     <!-- Paginação -->
     <div class="d-flex justify-content-center">
-        @if ($pagina_atual > 1)
-            <a href="{{ route('aluno.perfil', ['pagina' => 1, 'nome' => $nome]) }}" class="btn btn-primary me-2">Primeira</a>
-            <a href="{{ route('aluno.perfil', ['pagina' => $pagina_atual - 1, 'nome' => $nome]) }}" class="btn btn-primary me-2">Anterior</a>
+        @if (isset($pagina_atual) && $pagina_atual > 1)
+            <!-- Botão para a primeira página -->
+            <a href="{{ route('aluno.perfil', ['pagina' => 1, 'nome' => $nome ?? '']) }}" class="btn btn-primary me-2">Primeira</a>
+
+            <!-- Botão para a página anterior -->
+            <a href="{{ route('aluno.perfil', ['pagina' => $pagina_atual - 1, 'nome' => $nome ?? '']) }}" class="btn btn-primary me-2">Anterior</a>
         @endif
 
-        @for ($i = 1; $i <= $total_paginas; $i++)
-            <a href="{{ route('aluno.perfil', ['pagina' => $i, 'nome' => $nome]) }}" class="btn btn-secondary me-2">
+        <!-- Botões de número de página -->
+        @for ($i = 1; isset($total_paginas) && $i <= $total_paginas; $i++)
+            <a href="{{ route('aluno.perfil', ['pagina' => $i, 'nome' => $nome ?? '']) }}" 
+               class="btn {{ ($i == ($pagina_atual ?? 1)) ? 'btn-primary' : 'btn-secondary' }} me-2">
                 {{ $i }}
             </a>
         @endfor
 
-        @if ($pagina_atual < $total_paginas)
-            <a href="{{ route('aluno.perfil', ['pagina' => $pagina_atual + 1, 'nome' => $nome]) }}" class="btn btn-primary me-2">Próxima</a>
-            <a href="{{ route('aluno.perfil', ['pagina' => $total_paginas, 'nome' => $nome]) }}" class="btn btn-primary">Última</a>
+        @if (isset($pagina_atual) && isset($total_paginas) && $pagina_atual < $total_paginas)
+            <!-- Botão para a próxima página -->
+            <a href="{{ route('aluno.perfil', ['pagina' => $pagina_atual + 1, 'nome' => $nome ?? '']) }}" 
+               class="btn btn-primary me-2">Próxima</a>
+
+            <!-- Botão para a última página -->
+            <a href="{{ route('aluno.perfil', ['pagina' => $total_paginas, 'nome' => $nome ?? '']) }}" 
+               class="btn btn-primary">Última</a>
         @endif
     </div>
 
+    <!-- Botão Voltar -->
     <a href="{{ url('/proj_foccus/index.php') }}" class="btn btn-primary mt-3">Voltar -> Menu</a>
 </div>
 @endsection

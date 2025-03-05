@@ -1,68 +1,75 @@
 <?php
-/*
-...
-*/
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ControllerPerfil;
-
-
-
+use App\Http\Controllers\SondagemController;
+use App\Http\Controllers\SondagemInicialController;
+use App\Http\Controllers\TesteController;
+use App\Http\Controllers\PerfilEstudanteController;
+use App\Http\Controllers\EnsinoController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Aqui é onde você pode registrar as rotas da sua aplicação.
+| Essas rotas são carregadas pelo RouteServiceProvider dentro do grupo "web".
 |
 */
-/*
-  Route::get('/', function () {
-    return "inicio";
-}) 
-*/
-Route::get('/','PrincipalController@Principal');
 
-Route::get('/Sobre-nos','SobreNosController@sobreNos');
-    
+// Rota de teste
+Route::get('/teste', [TesteController::class, 'teste']);
 
+// Rota principal
+Route::get('/', 'PrincipalController@Principal');
+
+// Sobre nós
+Route::get('/Sobre-nos', 'SobreNosController@sobreNos');
+
+// Contato
 Route::get('/contato', 'ContatoController@contato');
 
+// Login
 Route::get('/login', 'Authcontroller@showLoginForm')->name('login');
 
+// Página inicial (index)
 Route::get('/index', function () {
-  return view('index');
+    return view('index');
 })->name('index');
- 
+
+// Listar tabelas do banco de dados (apenas para debug)
 Route::get('/tabelas', function () {
-  $tabelas = DB::select('SHOW TABLES');
-  return response()->json($tabelas);
+    $tabelas = DB::select('SHOW TABLES');
+    return response()->json($tabelas);
 });
-use App\Http\Controllers\SondagemController;
 
-
+// Sondagem inicial
 Route::get('/sondagem-inicial', [SondagemController::class, 'index'])->name('sondagem.inicial');
 
-
+// Formulário (exemplo)
 Route::get('/formulario', function () {
-  return view('formulario');
+    return view('formulario');
 })->name('formulario.view');
 
 Route::post('/formulario-submit', function (Request $request) {
-  // Processar os dados do formulário aqui
-  return back()->with('success', 'Formulário enviado com sucesso!');
+    // Processar os dados do formulário aqui
+    return back()->with('success', 'Formulário enviado com sucesso!');
 })->name('formulario.submit');
 
-use App\Http\Controllers\SondagemInicialController;
-
+// Grupo de rotas para professores
 Route::group(['prefix' => 'professor'], function () {
-  Route::get('/imprime-aluno', [ControllerPerfil::class, 'imprimeAluno'])->name('aluno.perfil');
+    Route::get('/imprime-aluno', [ControllerPerfil::class, 'imprimeAluno'])->name('aluno.perfil');
 });
 
-
+// Perfil do Estudante (com ID)
+ 
+ 
+Route::get('/perfil-estudante/{id}', [PerfilEstudanteController::class, 'mostrar'])
+->name('perfil.estudante.mostrar');
+ 
+// Grupo de rotas para sondagens
 Route::prefix('sondagem')->group(function () {
     Route::get('/inicial', [SondagemInicialController::class, 'inicial'])->name('sondagem.inicial');
     Route::get('/continuada1', [SondagemInicialController::class, 'continuada1'])->name('sondagem.continuada1');
@@ -70,13 +77,10 @@ Route::prefix('sondagem')->group(function () {
     Route::get('/final', [SondagemInicialController::class, 'final'])->name('sondagem.final');
 });
 
-use App\Http\Controllers\PerfilEstudanteController;
 
-Route::get('/perfil-estudante', [PerfilEstudanteController::class, 'index'])->name('perfil.estudante');
-Route::post('/perfil-estudante/salvar', [PerfilEstudanteController::class, 'store'])->name('perfil.estudante.salvar');
 
-use App\Http\Controllers\EnsinoController;
-
+// Modalidade de Ensino
 Route::get('/modalidade-ensino/inicial', [EnsinoController::class, 'inicial'])->name('modalidade.inicial');
 
 
+Route::get('/perfil-estudante', [PerfilEstudanteController::class, 'index'])->name('perfil.estudante');

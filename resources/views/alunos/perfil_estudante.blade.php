@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('perfil.estudante.salvar') }}">
+<<form method="POST" action="{{ route('perfil.estudante') }}">
     @csrf
 
 <!DOCTYPE html>

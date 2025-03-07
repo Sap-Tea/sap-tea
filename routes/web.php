@@ -8,6 +8,7 @@ use App\Http\Controllers\SondagemInicialController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\PerfilEstudanteController;
 use App\Http\Controllers\EnsinoController;
+use App\Http\Controllers\AlunoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +65,9 @@ Route::group(['prefix' => 'professor'], function () {
 });
 
 // Perfil do Estudante (com ID)
+Route::get('/alunos/{id}', [AlunoController::class, 'index'])->name('alunos.index');
  
+
  
 Route::get('/perfil-estudante/{id}', [PerfilEstudanteController::class, 'mostrar'])
 ->name('perfil.estudante.mostrar');

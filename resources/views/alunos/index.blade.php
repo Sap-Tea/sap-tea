@@ -1,36 +1,34 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Alunos</title>
-</head>
-<body>
-    <h1>Lista de Alunos</h1>
+@extends('layouts.app')
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>inep</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            @forelse ($alunos as $aluno)
+@section('content')
+<main>
+    <h1>Detalhes do Aluno</h1>
+    @if(isset($aluno))
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ $aluno->alu_id }}</td>
-                    <td>{{ $aluno->alu_nome}}</td>
-                    <td>{{ $aluno->alu_inep}}</td>
-                    
+                    <th>Nome</th>
+                    <th>Data de Nascimento</th>
+                    <th>Modalidade</th>
+                    <th>Série</th>
+                    <th>Professor</th>
+                    <th>Função do Professor</th>
                 </tr>
-            @empty
+            </thead>
+            <tbody>
                 <tr>
-                    <td colspan="4">Nenhum aluno encontrado.</td>
+                    <td>{{ $aluno->alu_nome }}</td>
+                    <td>{{ $aluno->alu_dtnasc }}</td>
+                    <td>{{ $aluno->desc_modalidade }}</td>
+                    <td>{{ $aluno->desc_serie_modalidade }}</td>
+                    <td>{{ $aluno->func_nome }}</td>
+                    <td>{{ $aluno->desc_tipo_funcao }}</td>
                 </tr>
-            @endforelse
-        </tbody>
-    </table>
-</body>
-</html>
+            </tbody>
+        </table>
+    @else
+        <p>Aluno não encontrado</p>
+    @endif
+</main>
+@endsection
+

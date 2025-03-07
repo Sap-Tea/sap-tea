@@ -100,36 +100,42 @@ button:hover {
         <div class="form-group">
                 <label>Nome do Aluno:</label>
                 <input type="text" name="nome_aluno"  
-                value="{{ $aluno->alu_nome }}" class="form-control">
+                value="{{ $aluno->alu_nome }}" class="form-control" readonly>
             </div>
             
             
             <div class="row">
                 <div class="form-group">
                     <label>Ano/Série:</label>
-                    <input type="text">
+                    <input type="text" value="{{$aluno->desc_modalidade.'-'.  $aluno->desc_serie_modalidade}}"
+                    readonly>
                 </div>
+
                 <div class="form-group">
               <label>Data de Cadastro:</label>
               <input type="text" name="alu_nasc"
                value="{{ \Carbon\Carbon::parse($aluno->alu_dtnasc)->format('d/m/Y') }}" 
-               class="form-control">
+               class="form-control" readonly>
 
                </div>
 
 
-               <div class="form-group">
-                <label>Idade:</label>
-                <input type="text" name="idade" value="{{ $idade }} anos"
-                 class="form-control" readonly>
+                     
+                <div class="form-group">
+              <label>Data de Cadastro:</label>
+              <input type="text" name="alu_nasc"
+               value="{{ \Carbon\Carbon::parse($aluno->alu_dtnasc)->age }} - anos" 
+ 
+               class="form-control" readonly>
 
-                </div>
+               </div>
 
             </div>
             
             <div class="form-group">
                 <label>Nome do Professor:</label>
-                <input type="text" disabled placeholder="Dados importados do sistema">
+                <input type="text" name ="nome_professo" 
+                value="{{ $aluno->func_nome }}" readonly>
             </div>
             
             <div class="row">

@@ -40,8 +40,9 @@
 
                     <!-- Botão Visualizar -->
                     <td>
-                    <a href="{{ route('perfil.estudante.mostrar', ['id' => $aluno->alu_id]) }}" 
-                     class="btn btn-primary btn-sm">Visualizar</a>
+                    <a href="{{ route('alunos.index', ['id' => $aluno->alu_id]) }}" 
+                    class="btn btn-primary btn-sm">Visualizar</a>
+
 
                     </td>
                 </tr>

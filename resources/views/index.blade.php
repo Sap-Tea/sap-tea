@@ -13,10 +13,6 @@
 
 <title>Barra Horizontal</title>
 
-
-
-
-
 </head>
 <body>
     <!-- Barra horizontal -->
@@ -29,19 +25,10 @@
     </div>
 </body>
 </html>
-
-
 <body>
-
-        
-
     <div class="sidebar">
-
-    
-    
     <div class="menu-logo">
     <img src="{{ asset('img/logo_sap.png') }}" alt="Logo">
-
 </div>
 <ul>
     <li>
@@ -54,15 +41,12 @@
         </ul>
     </li>
 </ul>
-
             <li><a href="#" data-target="formulario-cad-escola"><i class="fa-solid fa-school"></i> Rotina e Monitoramento ⬇️ </a>
                 <ul class="submenu_escola">
                 <li><a href="{{ route('modalidade.inicial') }}">.1 Inicial</a></li>
-
                     <li><a href="#" data-target="modalidade-ensino">.2 Continuada</a></li>
                     <li><a href="#" data-target="modalidade-ensino">.3 Continuada</a></li>
                     <li><a href="#" data-target="modalidade-ensino">.4 Final</a></li>
-               
                 </ul>
             </li>
         </ul>
@@ -73,21 +57,14 @@
                     <li><a href="#" data-target="modalidade-ensino">.2 Continuada</a></li>
                     <li><a href="#" data-target="modalidade-ensino">.3 Continuada</a></li>
                     <li><a href="#" data-target="modalidade-ensino">.4 Final</a></li>
-               
+            
                 </ul>
-
                 <li>
                 <a href="{{ route('perfil.estudante') }}" target="_blank">
-    <i class="fa-solid fa-graduation-cap"></i> Perfil do Estudante
-</a>
-
+                            <i class="fa-solid fa-graduation-cap"></i> Perfil do Estudante
+                </a>
   </a>
 </li>
-
-
-
-
-
             </li>
         </ul>
         <h2>Cadastros</h2>
@@ -97,21 +74,17 @@
             <li><a href="#" data-target="formulario-cad-escola"><i class="fa-solid fa-school"></i> Escola ▼ </a>
                 <ul class="submenu_escola">
                     <li><a href="#" data-target="modalidade-ensino">Modalidade de ensino</a></li>
-         
+      
                 </ul>
             </li>
             <li><a href="#" data-target="formulario-cad-aluno"><i class="fa-solid fa-user-graduate"></i> Aluno</a></li>
             <li><a href="#" data-target="funcao"><i class="fa-regular fa-keyboard"></i> Função</a></li>
             <li><a href="#" data-target="formulario-cad-funcionario"><i class="fa-solid fa-users"></i> Servidores</a></li>
-            
-            
             <li><a href="#" data-target="Enturmacao"><i class="fa-regular fa-folder"></i> Matriculas ▼ </a>
                 <ul class="submenu_matriculas">
                     <li><a href="#" data-target="formulario-enturmar-escola">Enturmação</a></li>
-                 
                 </ul>
             </li>
-           
         </ul>
 
         <h2>Inventarios</h2>

@@ -47,7 +47,7 @@ Route::get('/tabelas', function () {
 });
 
 // Sondagem inicial
-Route::get('/sondagem-inicial', [SondagemController::class, 'index'])->name('sondagem.inicial');
+Route::get('/sondagem-inicial', [SondagemInicialController::class, 'index'])->name('sondagem.inicial');
 
 // Formulário (exemplo)
 Route::get('/formulario', function () {
@@ -66,14 +66,12 @@ Route::group(['prefix' => 'professor'], function () {
 
 // Perfil do Estudante (com ID)
 Route::get('/alunos/{id}', [AlunoController::class, 'index'])->name('alunos.index');
- 
-
- 
-Route::get('/perfil-estudante/{id}', [PerfilEstudanteController::class, 'mostrar'])
+ Route::get('/perfil-estudante/{id}', [PerfilEstudanteController::class, 'mostrar'])
 ->name('perfil.estudante.mostrar');
  
 // Grupo de rotas para sondagens
 Route::prefix('sondagem')->group(function () {
+    // Route::get('/inicial', [AlunoController::class, 'index'])->name('alunos.index');
     Route::get('/inicial', [SondagemInicialController::class, 'inicial'])->name('sondagem.inicial');
     Route::get('/continuada1', [SondagemInicialController::class, 'continuada1'])->name('sondagem.continuada1');
     Route::get('/continuada2', [SondagemInicialController::class, 'continuada2'])->name('sondagem.continuada2');
@@ -84,6 +82,5 @@ Route::prefix('sondagem')->group(function () {
 
 // Modalidade de Ensino
 Route::get('/modalidade-ensino/inicial', [EnsinoController::class, 'inicial'])->name('modalidade.inicial');
-
 
 Route::get('/perfil-estudante', [PerfilEstudanteController::class, 'index'])->name('perfil.estudante');

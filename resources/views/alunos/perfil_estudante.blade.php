@@ -141,7 +141,10 @@ button:hover {
             <div class="row">
                 <div class="form-group">
                     <label>Possui diagnóstico/laudo?</label>
-                    <select><option>Sim</option><option>Não</option></select>
+                    <select>
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>CID:</label>
@@ -157,14 +160,20 @@ button:hover {
                 </div>
             </div>
             
-            <div class="row">
-                <div class="form-group">
-                    <label>Nível de suporte:</label>
-                    <input type="text">
-                </div>
+            
+            <div class="form-group">
+                    <label>Nível suporte</label>
+                    <select>
+                        <option value = "Nível 1 ">Nível 1 - Exige pouco apoio </option>
+                        <option value = "Nível 2  ">Nível 2 - Exige apoio substancial</option>
+                        <option value = "Nível 3 ">Nível 3 - Exige apoio muito substancial</option>
+                </select>
                 <div class="form-group">
                     <label>Faz uso de medicamento?</label>
-                    <select><option>Sim</option><option>Não</option></select>
+                    <select>
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Quais?</label>
@@ -179,7 +188,10 @@ button:hover {
                 </div>
                 <div class="form-group">
                     <label>O estudante conta com profissional de apoio?</label>
-                    <select><option>Sim</option><option>Não</option></select>
+                    <select>
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
                 </div>
             </div>
             
@@ -197,7 +209,10 @@ button:hover {
             
             <div class="form-group">
                 <label>O estudante conta com Atendimento Educacional Especializado?</label>
-                <select><option>Sim</option><option>Não</option></select>
+                <select>
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
             </div>
             
             <div class="form-group">
@@ -251,9 +266,9 @@ button:hover {
             <div class="form-group">
                 <label>Entende instruções? dadas de forma verbal ?</label>
                 <select>
-                    <option>Sim</option>
-                    <option>Não</option>
-                </select>
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
             </div>
             <div class="form-group">
                 <label>Caso não, qual? Como você recomenda dar instruções?</label>
@@ -281,9 +296,9 @@ button:hover {
             <div class="form-group">
                 <label>Apresenta seletividade alimentar?</label>
                 <select>
-                    <option>Sim</option>
-                    <option>Não</option>
-                </select>
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
 
             </div>
             <div class="form-group">

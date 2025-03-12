@@ -67,9 +67,11 @@
 </li>
             </li>
         </ul>
-        <h2>Cadastros</h2>
+        <h3>Foccus - Cadastros</h3>
+   
         <ul>
-            <li><a href="#" data-target="formulario-cad-instituicao"><i class="fa-solid fa-building-columns"></i> Instituição</a></li>
+            <li><a href="#" data-target="formulario-cad-instituicao"><i class="fa-solid fa-building-columns"></i> Gerênciamento</a></li>
+           <!-- 
             <li><a href="#" data-target="formulario-cad-orgao"><i class="fa-solid fa-building"></i> Órgão</a></li>
             <li><a href="#" data-target="formulario-cad-escola"><i class="fa-solid fa-school"></i> Escola ▼ </a>
                 <ul class="submenu_escola">
@@ -112,6 +114,7 @@
         <ul>
             <li><a href="#" data-target="formulario-cad-usuarios"><i class="fa-solid fa-address-card"></i> Cadastro de usuários</a></li>
         </ul>
+-->
     </div>
     
     <div id="formulario-container"></div> 

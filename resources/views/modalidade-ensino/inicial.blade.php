@@ -262,7 +262,7 @@
       </span>
       <span class="period">
         <strong>Período de Aplicação (Final):</strong>
-        <input type="date" placeholder="//" />
+        <input type="" placeholder="//" />
       </span>
     </div>
 

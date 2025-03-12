@@ -102,9 +102,76 @@
     background-color: #1e7e34;
 }
 
+.calendar {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
 
+        /* Cabeçalho */
+        .header {
+            background: #e0e0e0; /* Cinza neutro */
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
 
+        /* Estilização dos dias da semana */
+        .day {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+            padding: 15px;
+            border: 1px solid #ccc;
+            width: 120px;
+        }
 
+        /* Cores para os dias */
+        .monday { background: #FFF3CD; }  /* Amarelo neutro */
+        .tuesday { background: #D6EAF8; } /* Azul bebê */
+        .wednesday { background: #D4EDDA; } /* Verde neutro */
+        .thursday { background: #FAD7A0; } /* Laranja neutro */
+        .friday { background: #EAD1DC; } /* Roxo neutro */
+
+        /* Estilização das células */
+        .cell {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        /* Inputs ajustados */
+        .cell input {
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Input de horário menor */
+        .cell .time-input {
+            width: 80px;
+            padding: 5px;
+        }
+
+        /* Nome do profissional maior */
+        .cell .name-input {
+            width: 200px;
+            padding: 5px;
+        }
+
+        /* Input de especialidade normal */
+        .cell .specialty-input {
+            width: 150px;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
@@ -386,6 +453,56 @@
           <textarea rows="3"></textarea>
       </div>
 
+      <table class="calendar">
+        <!-- Cabeçalho -->
+        <tr>
+            <th class="header">Dia</th>
+            <th class="header">Horários</th>
+            <th class="header">Nome do Profissional</th>
+            <th class="header">Especialidade/Área</th>
+        </tr>
+
+        <!-- Segunda -->
+        <tr class="monday">
+            <td class="day">Segunda-feira</td>
+            <td class="cell"><input type="time" class="time-input" name="horario_seg"></td>
+            <td class="cell"><input type="text" class="name-input" name="profissional_seg"></td>
+            <td class="cell"><input type="text" class="specialty-input" name="especialidade_seg"></td>
+        </tr>
+
+        <!-- Terça -->
+        <tr class="tuesday">
+            <td class="day">Terça-feira</td>
+            <td class="cell"><input type="time" class="time-input" name="horario_ter"></td>
+            <td class="cell"><input type="text" class="name-input" name="profissional_ter"></td>
+            <td class="cell"><input type="text" class="specialty-input" name="especialidade_ter"></td>
+        </tr>
+
+        <!-- Quarta -->
+        <tr class="wednesday">
+            <td class="day">Quarta-feira</td>
+            <td class="cell"><input type="time" class="time-input" name="horario_qua"></td>
+            <td class="cell"><input type="text" class="name-input" name="profissional_qua"></td>
+            <td class="cell"><input type="text" class="specialty-input" name="especialidade_qua"></td>
+        </tr>
+
+        <!-- Quinta -->
+        <tr class="thursday">
+            <td class="day">Quinta-feira</td>
+            <td class="cell"><input type="time" class="time-input" name="horario_qui"></td>
+            <td class="cell"><input type="text" class="name-input" name="profissional_qui"></td>
+            <td class="cell"><input type="text" class="specialty-input" name="especialidade_qui"></td>
+        </tr>
+
+        <!-- Sexta -->
+        <tr class="friday">
+            <td class="day">Sexta-feira</td>
+            <td class="cell"><input type="time" class="time-input" name="horario_sex"></td>
+            <td class="cell"><input type="text" class="name-input" name="profissional_sex"></td>
+            <td class="cell"><input type="text" class="specialty-input" name="especialidade_sex"></td>
+        </tr>
+    </table>
+
     <div class="button-group">
         
     <a href="{{ route('index') }}" class="btn btn-primary">Salvar</a>
@@ -421,6 +538,9 @@
             pdf.save("perfil_estudante.pdf"); // Baixa o PDF
         });
     });
+
+
+    
 </script>
 
 </body>

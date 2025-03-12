@@ -63,6 +63,6 @@
     @endif
 
     <!-- Botão Voltar -->
-    <a href="{{ url('/') }}" class="btn btn-secondary mt-3">Voltar -> Menu</a>
+    <a href="{{ route('index') }}" class="btn btn-secondary mt-3">Voltar -> Menu</a>
 </div>
 @endsection

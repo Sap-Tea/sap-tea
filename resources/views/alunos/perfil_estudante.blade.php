@@ -48,46 +48,61 @@
             flex-wrap: wrap;
             gap: 10px;
         }
+
+
         .button-group {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    gap: 10px; /* Espaçamento entre os botões */
+    justify-content: center; /* Centraliza os botões */
     margin-top: 20px;
 }
 
-button {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.btn {
+    padding: 12px 20px;
     font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
 }
 
-button:hover {
-    opacity: 0.8;
-}
-
-.cancel-button {
-    background-color:rgb(230, 0, 0);
+.btn-primary {
+    background-color: #007bff;
     color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #a71d2a;
 }
 
 .pdf-button {
-    background-color: #0073e6;
+    background-color: #28a745;
     color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-        input, select, textarea {
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .comunicacao-section {
-    border-left: 10px solid #003366; /* Azul escuro */
-    padding-left: 15px; /* Para afastar o texto da borda */
+.pdf-button:hover {
+    background-color: #1e7e34;
 }
+
+
 
 
     </style>
@@ -372,9 +387,9 @@ button:hover {
       </div>
 
     <div class="button-group">
-    <button type="submit" formaction="/proj_foccus/index.php">Salvar</button>
-<button type="button" class="cancel-button" onclick="window.location.href='/proj_foccus/index.blade.php'">Cancelar</button>
-
+        
+    <a href="{{ route('index') }}" class="btn btn-primary">Salvar</a>
+<a href="{{ route('index') }}" class="btn btn-danger">Cancelar</a>
     <button type="button" class="pdf-button">Gerar PDF</button>
 </div>
 

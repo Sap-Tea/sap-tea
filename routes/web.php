@@ -47,7 +47,7 @@ Route::get('/tabelas', function () {
 });
 
 // Sondagem inicial
-Route::get('/sondagem-inicial', [SondagemInicialController::class, 'index'])->name('sondagem.inicial');
+Route::get('/sondagem-inicial', [SondagemController::class, 'index'])->name('sondagem.inicial');
 
 // Formulário (exemplo)
 Route::get('/formulario', function () {
@@ -84,3 +84,12 @@ Route::prefix('sondagem')->group(function () {
 Route::get('/modalidade-ensino/inicial', [EnsinoController::class, 'inicial'])->name('modalidade.inicial');
 
 Route::get('/perfil-estudante', [PerfilEstudanteController::class, 'index'])->name('perfil.estudante');
+
+
+Route::post('/proj_foccus/index.php', 'SeuController@metodoSalvar'); 
+
+/*
+Route::get('/acessar-proj-foccus', function () {
+    return redirect()->away('http://proj_foccus');
+});
+*/

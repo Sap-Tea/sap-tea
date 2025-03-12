@@ -94,32 +94,54 @@
 
     .button-group {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    gap: 10px; /* Espaçamento entre os botões */
+    justify-content: center; /* Centraliza os botões */
     margin-top: 20px;
 }
 
-button {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.btn {
+    padding: 12px 20px;
     font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
 }
 
-button:hover {
-    opacity: 0.8;
-}
-
-.cancel-button {
-    background-color:rgb(230, 0, 0);
+.btn-primary {
+    background-color: #007bff;
     color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #a71d2a;
 }
 
 .pdf-button {
-    background-color: #0073e6;
+    background-color: #28a745;
     color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.pdf-button:hover {
+    background-color: #1e7e34;
 }
 
     /* TABELA DE ATIVIDADES */
@@ -236,11 +258,11 @@ button:hover {
     <div class="period-section">
       <span class="period">
         <strong>Período de Aplicação (Inicial):</strong>
-        <input type="text" placeholder="//" />
+        <input type="date" placeholder="//" />
       </span>
       <span class="period">
         <strong>Período de Aplicação (Final):</strong>
-        <input type="text" placeholder="//" />
+        <input type="date" placeholder="//" />
       </span>
     </div>
 
@@ -354,10 +376,37 @@ button:hover {
       </div>
     </div>
     <div class="button-group">
-    <button type="submit" formaction="/proj_foccus/index.php">Salvar</button>
-<button type="button" class="cancel-button" onclick="window.location.href='/proj_foccus/index.blade.php'">Cancelar</button>
-
-    <button type="button" class="pdf-button">Gerar PDF</button>
+        
+        <a href="{{ route('index') }}" class="btn btn-primary">Salvar</a>
+    <a href="{{ route('index') }}" class="btn btn-danger">Cancelar</a>
+        <button type="button" class="pdf-button">Gerar PDF</button>
+    </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+<script>
+    document.querySelector(".pdf-button").addEventListener("click", function () {
+        const { jsPDF } = window.jspdf;
+
+        // Seleciona a parte da página que será capturada
+        const element = document.body; 
+
+        // Usa html2canvas para converter a página em imagem
+        html2canvas(element, { scale: 2 }).then(canvas => {
+            const imgData = canvas.toDataURL("image/png"); // Converte para imagem
+            const pdf = new jsPDF("p", "mm", "a4"); // Cria um documento PDF
+
+            // Ajusta a imagem no PDF
+            const imgWidth = 210; // Largura em mm (A4)
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+            pdf.save("ROTINA E MONITORAMENTO.PDF"); // Baixa o PDF
+        });
+    });
+</script>
 </body>
 </html>

@@ -168,55 +168,56 @@ input[type="radio"]:hover {
 
 
 /* Estilos gerais dos botões */
-.btn {
-    font-size: 14px; /* Tamanho reduzido */
-    font-weight: bold;
-    padding: 8px 16px; /* Reduzindo o padding */
-    border: none;
-    border-radius: 6px; /* Ajuste no arredondamento */
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    text-transform: uppercase;
-    display: inline-block; /* Garante que fiquem lado a lado */
-    text-align: center;
-}
-
-/* Centralizando os botões */
-.btn-container {
+.button-group {
     display: flex;
-    justify-content: center;
     gap: 10px; /* Espaçamento entre os botões */
-    margin-top: 20px; /* Espaçamento opcional */
+    justify-content: center; /* Centraliza os botões */
+    margin-top: 20px;
 }
 
-/* Botão primário (azul) */
+.btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
 .btn-primary {
-    background-color:rgb(23, 204, 41);
+    background-color: #007bff;
     color: white;
 }
 
 .btn-primary:hover {
-    background-color:rgb(21, 97, 10);
+    background-color: #0056b3;
 }
 
-/* Botão secundário (cinza) */
-.btn-secondary {
-    background-color:rgb(14, 30, 202);
-    color: white;
-}
-
-.btn-secondary:hover {
-    background-color:rgb(26, 43, 60);
-}
-
-/* Botão de perigo (vermelho) */
 .btn-danger {
     background-color: #dc3545;
     color: white;
 }
 
 .btn-danger:hover {
-    background-color:rgb(105, 31, 38);
+    background-color: #a71d2a;
+}
+
+.pdf-button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.pdf-button:hover {
+    background-color: #1e7e34;
 }
 
 
@@ -660,10 +661,11 @@ input[type="radio"]:hover {
 
 
         <br>
-        <div class="btn-container">
-    <button class="btn btn-primary">Cancelar</button>
-    <button class="btn btn-secondary">Imprimir</button>
+        <div class="button-group">
+        
+        <a href="{{ route('index') }}" class="btn btn-primary">Salvar</a>
     <a href="{{ route('index') }}" class="btn btn-danger">Cancelar</a>
+    <button type="button" class="pdf-button">Gerar PDF</button>
 
 </div>
 
@@ -671,9 +673,31 @@ input[type="radio"]:hover {
     </form>
 
 
-    
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
+    
+    <script>
+    document.querySelector(".pdf-button").addEventListener("click", function () {
+        const { jsPDF } = window.jspdf;
+
+        // Seleciona a parte da página que será capturada
+        const element = document.body; 
+
+        // Usa html2canvas para converter a página em imagem
+        html2canvas(element, { scale: 2 }).then(canvas => {
+            const imgData = canvas.toDataURL("image/png"); // Converte para imagem
+            const pdf = new jsPDF("p", "mm", "a4"); // Cria um documento PDF
+
+            // Ajusta a imagem no PDF
+            const imgWidth = 210; // Largura em mm (A4)
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+            pdf.save("inicial.pdf"); // Baixa o PDF
+        });
+    });
+</script>
 </body>
 </html>
 

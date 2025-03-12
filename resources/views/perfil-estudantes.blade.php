@@ -386,9 +386,10 @@ button:hover {
       </div>
 
     <div class="button-group">
-    <button type="submit" formaction="/proj_foccus/index.php">Salvar</button>
+        
+    <button type="submit" formaction="/proj_foccus/index.php">Salvars</button>
 <button type="button" class="cancel-button" onclick="window.location.href='/proj_foccus/index.blade.php'">Cancelar</button>
-
+<a href="{{ route('index') }}" class="btn btn-danger">Cancelassr</a>
     <button type="button" class="pdf-button">Gerar PDF</button>
 </div>
 

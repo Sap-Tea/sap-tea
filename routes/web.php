@@ -9,6 +9,7 @@ use App\Http\Controllers\TesteController;
 use App\Http\Controllers\PerfilEstudanteController;
 use App\Http\Controllers\EnsinoController;
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\InserirPerfilEstudante;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,11 +41,7 @@ Route::get('/index', function () {
     return view('index');
 })->name('index');
 
-// Listar tabelas do banco de dados (apenas para debug)
-Route::get('/tabelas', function () {
-    $tabelas = DB::select('SHOW TABLES');
-    return response()->json($tabelas);
-});
+
 
 // Sondagem inicial
 Route::get('/sondagem-inicial', [SondagemController::class, 'index'])->name('sondagem.inicial');
@@ -68,6 +65,13 @@ Route::group(['prefix' => 'professor'], function () {
 Route::get('/alunos/{id}', [AlunoController::class, 'index'])->name('alunos.index');
  Route::get('/perfil-estudante/{id}', [PerfilEstudanteController::class, 'mostrar'])
 ->name('perfil.estudante.mostrar');
+
+Route::post('/inserir_perfil', [InserirPerfilEstudante::class, 'inserir_perfil_estudante'])->name('inserir_perfil');
+
+
+
+
+
  
 // Grupo de rotas para sondagens
 Route::prefix('sondagem')->group(function () {
@@ -86,7 +90,9 @@ Route::get('/modalidade-ensino/inicial', [EnsinoController::class, 'inicial'])->
 Route::get('/perfil-estudante', [PerfilEstudanteController::class, 'index'])->name('perfil.estudante');
 
 
-Route::post('/proj_foccus/index.php', 'SeuController@metodoSalvar'); 
+
+
+//Route::post('/proj_foccus/index.php', 'SeuController@metodoSalvar'); 
 
 /*
 Route::get('/acessar-proj-foccus', function () {

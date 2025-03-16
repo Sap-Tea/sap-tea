@@ -5,7 +5,7 @@
     <h2>Relação dos Alunos</h2>
 
     <!-- Formulário de Pesquisa -->
-    <form method="GET" action="{{ route('aluno.perfil') }}">
+    <form method="POST" action="{{ route('inserir_perfil') }}">
         <div class="input-group mb-3">
             <input type="text" name="nome" class="form-control" placeholder="Pesquisar por aluno"
                    value="{{ request('nome') }}">

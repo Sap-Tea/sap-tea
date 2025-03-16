@@ -1,0 +1,37 @@
+// resources/js/perfilEstudante.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    const botaoSalvar = document.getElementById('salvarDados');
+    
+    if (botaoSalvar) {
+        botaoSalvar.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // Capturar valores dos inputs
+            const diagLaudo = document.querySelector('select[name="diag_laudo"]').value;
+            const cid = document.querySelector('input[name="cid"]').value;
+            const medico = document.querySelector('input[name="nome_medico"]').value;
+            const dataLaudo = document.querySelector('input[name="data_laudo"]').value;
+            // Capturar outros campos conforme necessário
+            
+            // Enviar requisição para o servidor
+            fetch("{{ route('inserir_perfil') }}", {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    diag_laudo: diagLaudo,
+                    cid: cid,
+                    medico: medico,
+                    data_laudo: dataLaudo
+                    // Adicionar outros campos conforme necessário
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Erro:', error));
+        });
+    }
+});

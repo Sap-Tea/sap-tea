@@ -1,4 +1,4 @@
-<<form method="POST" action="{{ route('perfil.estudante') }}">
+<<form method="POST" action="{{ route('inserir_perfil') }}">
     @csrf
 
 <!DOCTYPE html>
@@ -175,7 +175,10 @@
     </style>
 </head>
 <body>
-    <div class="container">
+
+
+
+<div class="container">
         
         <h2>I - Perfil do Estudante</h2>
         <form>
@@ -220,25 +223,25 @@
                 value="{{ $aluno->func_nome }}" readonly>
             </div>
             
-            <div class="row">
-                <div class="form-group">
-                    <label>Possui diagnóstico/laudo?</label>
-                    <select>
+            <d        <label>Possui diagnóstico/laudo?</label>
+                    <select name="diag_laudo">
                         <option value="1">Sim</option>
                         <option value="0">Não</option>
                     </select>
-                </div>
+                </div>iv class="row">
+                <div class="form-group">
+            
                 <div class="form-group">
                     <label>CID:</label>
-                    <input type="text">
+                    <input type="text" name="cid">
                 </div>
                 <div class="form-group">
                     <label>Médico:</label>
-                    <input type="text">
+                    <input type="text" name="nome_medico">
                 </div>
                 <div class="form-group">
                     <label>Data do Laudo:</label>
-                    <input type="date">
+                    <input type="date" name="data_laudo">
                 </div>
             </div>
             
@@ -246,9 +249,9 @@
             <div class="form-group">
                     <label>Nível suporte</label>
                     <select>
-                        <option value = "Nível 1 ">Nível 1 - Exige pouco apoio </option>
-                        <option value = "Nível 2  ">Nível 2 - Exige apoio substancial</option>
-                        <option value = "Nível 3 ">Nível 3 - Exige apoio muito substancial</option>
+                        <option value = "1">Nível 1 - Exige pouco apoio </option>
+                        <option value = "2">Nível 2 - Exige apoio substancial</option>
+                        <option value = "3">Nível 3 - Exige apoio muito substancial</option>
                 </select>
                 <div class="form-group">
                     <label>Faz uso de medicamento?</label>
@@ -505,10 +508,15 @@
 
     <div class="button-group">
         
-    <a href="{{ route('index') }}" class="btn btn-primary">Salvar</a>
-<a href="{{ route('index') }}" class="btn btn-danger">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+
+ <a href="{{ route('index') }}" class="btn btn-danger">Cancelar</a>
     <button type="button" class="pdf-button">Gerar PDF</button>
 </div>
+
+
+
+
 
 
         </form>
@@ -550,3 +558,17 @@
 @if(session('success'))
     <p style="color: green;">{{ session('success') }}</p>
 @endif
+
+<script>
+function enviarRequisicao() {
+    fetch("{{ route('inserir_perfil') }}", {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Erro:', error));
+}
+</script>

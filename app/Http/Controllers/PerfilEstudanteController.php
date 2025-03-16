@@ -29,4 +29,10 @@ class PerfilEstudanteController extends Controller
             return view('alunos.perfil_estudante', compact('aluno', 'idade'));
         }
 
+
+
+
+
+
+        
 }

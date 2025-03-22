@@ -16,12 +16,16 @@
 <img src="{{ asset('img/logo_sap.png') }}" alt="Logo Transparente Central" class="logo-center">
 <div class="container">
         <h2>I - Perfil do Estudante</h2>
-        <form method="POST" action="{{ route('inserir_perfil') }}">
+      <form method="POST" action="{{ route('atualiza.perfil.estudante', ['id' => $aluno->alu_id]) }}">
+    @csrf
+    <!-- Restante do formulário -->
+</form>
+
             @csrf
             <input type="hidden" name="aluno_id" value="{{$aluno->alu_id }}">
             <div class="form-group">
                 <label>Nome do Aluno:</label>
-                <input type="text" name="nome_aluno" value="{{ $aluno->alu_nome }}" readonly>
+                <input type="text" name="nome_aluno" value="{{$aluno[0]->alu_nome }}" readonly>>
             </div>
 
             <div class="row">

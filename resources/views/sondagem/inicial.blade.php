@@ -262,7 +262,7 @@ input[type="radio"]:hover {
 </head>
 <body>
 
-
+<div id="capture">
 
     <form id="form1">
         <table>
@@ -656,7 +656,7 @@ input[type="radio"]:hover {
             </tbody>
         </table>
 
-
+        </div>
 
 
 
@@ -673,30 +673,40 @@ input[type="radio"]:hover {
     </form>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+   <!-- Importação das bibliotecas -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-    
-    <script>
-    document.querySelector(".pdf-button").addEventListener("click", function () {
-        const { jsPDF } = window.jspdf;
+<script>
+document.querySelector(".pdf-button").addEventListener("click", function () {
+    const { jsPDF } = window.jspdf;
+    const element = document.getElementById("capture"); // Seleciona a área desejada
 
-        // Seleciona a parte da página que será capturada
-        const element = document.body; 
+    html2canvas(element, {
+        scale: 0.9, // Melhora a qualidade da imagem capturada
+        useCORS: true
+    }).then(canvas => {
+        const imgData = canvas.toDataURL("image/png");
+        const pdf = new jsPDF("p", "mm", "a4");
 
-        // Usa html2canvas para converter a página em imagem
-        html2canvas(element, { scale: 2 }).then(canvas => {
-            const imgData = canvas.toDataURL("image/png"); // Converte para imagem
-            const pdf = new jsPDF("p", "mm", "a4"); // Cria um documento PDF
+        const imgWidth = 210; // Largura A4 em mm
+        const pageHeight = 297; // Altura A4 em mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width; // Mantém a proporção
 
-            // Ajusta a imagem no PDF
-            const imgWidth = 210; // Largura em mm (A4)
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let y = 0;
 
-            pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-            pdf.save("inicial.pdf"); // Baixa o PDF
-        });
-    });
+        while (y < imgHeight) {
+            pdf.addImage(imgData, "PNG", 0, y * -1, imgWidth, imgHeight);
+            y += pageHeight;
+
+            if (y < imgHeight) {
+                pdf.addPage(); // Adiciona nova página se necessário
+            }
+        }
+
+        pdf.save("formulario.pdf");
+    }).catch(error => console.error("Erro ao gerar PDF:", error));
+});
 </script>
 </body>
 </html>

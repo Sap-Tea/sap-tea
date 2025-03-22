@@ -5,14 +5,31 @@
     <h2>Relação dos Alunos</h2>
 
     <!-- Formulário de Pesquisa -->
-    <form method="POST" action="{{ route('inserir_perfil') }}">
+    <form id = "pesquisaForm" method="POST" action="{{ route('inserir_perfil') }}">
         <div class="input-group mb-3">
             <input type="text" name="nome" class="form-control" placeholder="Pesquisar por aluno"
                    value="{{ request('nome') }}">
-            <button class="btn btn-primary" type="submit">Pesquisar</button>
+            <button id="pesquisarBtn" class="btn btn-primary" type="submit">Pesquisar</button>
+
         </div>
     </form>
 
+<script>
+document.getElementById('pesquisarBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // Previne o envio padrão do formulário
+
+    // Pega o valor do campo de pesquisa
+    var nome = document.querySelector('input[name="nome"]').value;
+
+    // Redireciona para a rota imprime_aluno com o parâmetro nome
+    window.location.href = "{{route('imprime_aluno') }}?nome=" + nome;
+});
+
+
+
+</script>
+
+    
     <!-- Tabela de Resultados -->
     <table class="table table-striped">
         <thead>
@@ -37,19 +54,33 @@
                     <td>{{ $aluno->alu_nome_resp }}</td>
                     <td>{{ $aluno->alu_tel_resp }}</td>
                     <td>{{ $aluno->alu_email_resp }}</td>
-
-                    <!-- Botão Visualizar -->
+                  
+                    <!-- Botão cadastra -->
                     <td>
-                    <a href="{{ route('alunos.index', ['id' => $aluno->alu_id]) }}" 
-                    class="btn btn-primary btn-sm">Visualizar</a>
+                        @if($aluno->flag_perfil === "*")
+                            <button class="btn btn-primary btn-sm" disabled>Cadastra Perfil</button>
+                        @else
+                            <a href="{{ route('alunos.index', ['id' => $aluno->alu_id]) }}" 
+                               class="btn btn-primary btn-sm">Cadastra Perfil</a>
+                        @endif
+                    </td>
 
-
+                    <!-- Botão visualiza/atualiza -->
+                    <td>
+                        @if($aluno->flag_perfil === null)
+                            <button class="btn btn-warning btn-sm text-white" 
+                                    style="background-color: #e67e22; border-color: #d35400;"
+                                    disabled>Visualiza Perfil</button>
+                        @else
+                            <a href="{{ route('atualiza.perfil.estudante', ['id' => $aluno->alu_id]) }}" 
+                               class="btn btn-primary btn-sm">Visualiza Perfil</a>
+                        @endif
                     </td>
                 </tr>
             @empty
                 <!-- Caso não existam alunos -->
                 <tr>
-                    <td colspan="7" class="text-center">Nenhum aluno encontrado.</td>
+                    <td colspan="8" class="text-center">Nenhum aluno encontrado.</td>
                 </tr>
             @endforelse
         </tbody>

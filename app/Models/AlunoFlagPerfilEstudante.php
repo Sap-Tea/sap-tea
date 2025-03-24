@@ -9,4 +9,8 @@ class AlunoFlagPerfilEstudante extends Model
     protected $table = 'Aluno';
     protected $fillable = ['flag_perfil'];
     public $timestamps = false;
+    //testando 
+
+    vcvccvcvcvcvcvcvc
+    
 }

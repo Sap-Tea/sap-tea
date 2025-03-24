@@ -14,6 +14,8 @@
 <img src="{{ asset('img/logogando.png') }}" alt="Logo Superior Esquerda" class="logo-top-left">
 <img src="{{ asset('img/logo_baixo.png') }}" alt="Logo Inferior Direita" class="logo-bottom-right">
 <img src="{{ asset('img/logo_sap.png') }}" alt="Logo Transparente Central" class="logo-center">
+
+
 <div class="container">
         <h2>I - Perfil do Estudante</h2>
         <form method="POST" action="{{ route('inserir_perfil') }}">
@@ -31,12 +33,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Data de Cadastro:</label>
+                    <label>Data de Nascimento:</label>
                     <input type="text" name="alu_nasc" value="{{ \Carbon\Carbon::parse($aluno->alu_dtnasc)->format('d/m/Y') }}" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label>Data de Cadastro:</label>
+                    <label>Idade do aluno:</label>
                     <input type="text" name="alu_nasc" value="{{ \Carbon\Carbon::parse($aluno->alu_dtnasc)->age }} - anos" readonly>
                 </div>
             </div>

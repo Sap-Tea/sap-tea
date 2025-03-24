@@ -166,10 +166,6 @@ button:hover {
                         <option value = "Nível 3 - Exige apoio muito substancial">Não</option>
                 </select>
 
-
-
-
-
                 <div class="form-group">
                     <label>Possui diagnóstico/laudo?</label>
                     <select>

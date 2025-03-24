@@ -21,9 +21,9 @@ class AtualizaPerfinEstudante extends Controller
               LEFT JOIN tipo_funcao AS tp ON tp.tipo_funcao_id = fun.func_cod_funcao
               WHERE alu.alu_id = ?";
     
-    $aluno = DB::select($query, [$id]);
-
-    if (empty($aluno)) {
+    $dados= DB::select($query, [$id]);
+   // dd($dados);
+    if (empty($dados)) {
         abort(404); // Aluno não encontrado
     }
 
@@ -40,9 +40,10 @@ class AtualizaPerfinEstudante extends Controller
         INNER JOIN perfil_familia AS pfa 
         ON pfa.fk_id_aluno = com.fk_alu_id
     ");
+    
 
     // Redireciona para a view com os dados
-    return view('alunos.atualiza_perfil_estudante', compact('aluno', 'results'));
+    return view('alunos.atualiza_perfil_estudante', compact('dados', 'results'));
 }
 
     

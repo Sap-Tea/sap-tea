@@ -11,6 +11,5 @@ class AlunoFlagPerfilEstudante extends Model
     public $timestamps = false;
     //testando 
 
-    vcvccvcvcvcvcvcvc
-    
+
 }

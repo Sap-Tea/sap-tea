@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+<input name = "teste" type="text"></input>
 <img src="{{ asset('img/logogando.png') }}" alt="Logo Superior Esquerda" class="logo-top-left">
 <img src="{{ asset('img/logo_baixo.png') }}" alt="Logo Inferior Direita" class="logo-bottom-right">
 <img src="{{ asset('img/logo_sap.png') }}" alt="Logo Transparente Central" class="logo-center">

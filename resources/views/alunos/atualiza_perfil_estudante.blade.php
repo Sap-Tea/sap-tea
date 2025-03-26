@@ -307,8 +307,8 @@
             @endforeach
 
             <div class="button-group">
-                <button type="submit" class="btn btn-primary">Salvar</button>
-                <a href="{{ route('index') }}" class="btn btn-danger">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Confirma alteração</button>
+                <a href="{{ route('atualizar.perfil) }}" class="btn btn-danger">Cancelar</a>
                 <button type="button" class="pdf-button">Gerar PDF</button>
             </div>
         </form>

@@ -10,7 +10,6 @@
 </head>
 
 <body>
-<input name = "teste" type="text"></input>
 <img src="{{ asset('img/logogando.png') }}" alt="Logo Superior Esquerda" class="logo-top-left">
 <img src="{{ asset('img/logo_baixo.png') }}" alt="Logo Inferior Direita" class="logo-bottom-right">
 <img src="{{ asset('img/logo_sap.png') }}" alt="Logo Transparente Central" class="logo-center">
@@ -54,17 +53,12 @@
             @foreach($results as $perfil)
                 <!-- Aqui você pode usar os dados de $results -->
                 <div class="form-group">
-                    <label>Possui diagnóstico/laudo?</label>
+               <label>Possui diagnóstico/laudo?</label>
                     <select name="diag_laudo">
-                        @if($perfil->diag_laudo == 1)
-                            <option value="1" selected>Sim</option>
-                            <option value="0">Não</option>
-                        @else
-                            <option value="1">Sim</option>
-                            <option value="0" selected>Não</option>
-                        @endif
+                        <option value="1" @if($perfil->diag_laudo == 1) selected @endif>Sim</option>
+                        <option value="0" @if($perfil->diag_laudo == 0) selected @endif>Não</option>
                     </select>
-                </div>
+            </div>
 
                 <div class="row">
                     <div class="form-group">
@@ -84,19 +78,20 @@
                 <div class="form-group">
                     <label>Nível suporte</label>
                     <select name="nivel_suporte">
-                        <option value="1">Nível 1 - Exige pouco apoio </option>
-                        <option value="2">Nível 2 - Exige apoio substancial</option>
-                        <option value="3">Nível 3 - Exige apoio muito substancial</option>
+                        <option value="1" @if($perfil->nivel_suporte == 1) selected @endif>Nível 1 - Exige pouco apoio </option>
+                        <option value="2" @if($perfil->nivel_suporte == 2) selected @endif>Nível 2 - Exige apoio substancial</option>
+                        <option value="3" @if($perfil->nivel_suporte == 3) selected @endif>Nível 3 - Exige apoio muito substancial</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Faz uso de medicamento?</label>
+                <label>Faz uso de medicamento?</label>
                     <select name="uso_medicamento">
-                        <option value="1">Sim</option>
-                        <option value="0">Não</option>
+                        <option value="1" @if($perfil->uso_medicamento == 1) selected @endif>Sim</option>
+                        <option value="0" @if($perfil->uso_medicamento == 0) selected @endif>Não</option>
                     </select>
                 </div>
+
 
                 <div class="form-group">
                     <label>Quais?</label>
@@ -121,24 +116,26 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Em quais momentos da rotina esse profissional se faz necessário?</label>
+                 <label>Em quais momentos da rotina esse profissional se faz necessário?</label>
                     <div class="checkbox-group">
-                        <input type="checkbox" name="locomocao"><label for="locomocao">Locomoção</label>
-                        <input type="checkbox" name="higiene"><label for="higiene">Higiene</label>
-                        <input type="checkbox" name="alimentacao"><label for="alimentacao">Alimentação</label>
-                        <input type="checkbox" name="comunicacao"><label for="comunicacao">Comunicação</label>
-                        <input type="checkbox" name="outros"><label for="outros">Outros momentos</label>
-                    </div>
+                        <input type="checkbox" name="locomocao" @if($perfil->loc_01) checked @endif><label for="locomocao">Locomoção</label>
+                        <input type="checkbox" name="higiene" @if($perfil->hig_02) checked @endif><label for="higiene">Higiene</label>
+                        <input type="checkbox" name="alimentacao" @if($perfil->ali_03) checked @endif><label for="alimentacao">Alimentação</label>
+                        <input type="checkbox" name="comunicacao" @if($perfil->com_04) checked @endif><label for="comunicacao">Comunicação</label>
+                        <input type="checkbox" name="outros" @if($perfil->out_05) checked @endif><label for="outros">Outros momentos</label>
+                </div>
                     <input type="text" name="out_momentos" placeholder="Quais?" value="{{$perfil->out_momentos }}">
                 </div>
+
 
                 <div class="form-group">
                     <label>O estudante conta com Atendimento Educacional Especializado?</label>
                     <select name="at_especializado">
-                        <option value="1">Sim</option>
-                        <option value="0">Não</option>
+                        <option value="1" @if($perfil->at_especializado == 1) selected @endif>Sim</option>
+                        <option value="0" @if($perfil->at_especializado == 0) selected @endif>Não</option>
                     </select>
                 </div>
+
 
                 <div class="form-group">
                     <label>Nome do profissional do AEE:</label>
@@ -180,20 +177,21 @@
                 <h2 class="comunicacao-section">III - Comunicação</h2>
 
                 <div class="form-group">
-                    <label>Precisa de comunicação alternativa para expressar-se?</label>
-                    <select name="precisa_comunicacao">
-                        <option value="1">Sim</option>
-                        <option value="0">Não</option>
-                    </select>
+                   <label>Precisa de comunicação alternativa para expressar-se?</label>
+                   <select name="precisa_comunicacao">
+                     <option value="1" @if($perfil->precisa_comunicacao == 1) selected @endif>Sim</option>
+                     <option value="0" @if($perfil->precisa_comunicacao == 0) selected @endif>Não</option>
+                 </select>
                 </div>
 
+
                 <div class="form-group">
-                    <label>Entende instruções dadas de forma verbal ?</label>
-                    <select name="entende_instrucao">
-                        <option value="1">Sim</option>
-                        <option value="0">Não</option>
-                    </select>
-                </div>
+                 <label>Entende instruções dadas de forma verbal?</label>
+                  <select name="entende_instrucao">
+                     <option value="1" @if($perfil->entende_instrucao == 1) selected @endif>Sim</option>
+                    <option value="0" @if($perfil->entende_instrucao == 0) selected @endif>Não</option>
+                  </select>
+            </div>
 
                 <div class="form-group">
                     <label>Caso não,Como você recomenda dar instruções?</label>
@@ -204,14 +202,14 @@
 
                 <div class="form-group">
                     <label>Apresenta sensibilidade:</label>
-                    <div class="checkbox-group">
-                        <input type="checkbox" name="s_auditiva"><label for="s_auditiva">Auditiva</label>
-                        <input type="checkbox" name="s_visual"><label for="s_visual">Visual</label>
-                        <input type="checkbox" name="s_tatil"><label for="s_tatil">Tátil</label>
-                        <input type="checkbox" name="s_outros"><label for="s_outros">Outros estímulos</label>
-                    </div>
-
+                        <div class="checkbox-group">
+                            <input type="checkbox" name="s_auditiva" @if($perfil->auditivo_04) checked @endif><label for="s_auditiva">Auditiva</label>
+                            <input type="checkbox" name="s_visual" @if($perfil->visual_04) checked @endif><label for="s_visual">Visual</label>
+                            <input type="checkbox" name="s_tatil" @if($perfil->tatil_04) checked @endif><label for="s_tatil">Tátil</label>
+                            <input type="checkbox" name="s_outros" @if($perfil->outros_04) checked @endif><label for="s_outros">Outros estímulos</label>
+                        </div>
                 </div>
+
 
                 <div class="form-group">
                     <label>Caso sim,Como manejar em sala de aula</label>
@@ -219,13 +217,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Apresenta seletividade alimentar?</label>
+                  <label>Apresenta seletividade alimentar?</label>
                     <select name="seletividade_alimentar">
-                        <option value="1">Sim</option>
-                        <option value="0">Não</option>
+                        <option value="1" @if($perfil->asa_04 == 1) selected @endif>Sim</option>
+                        <option value="0" @if($perfil->asa_04 == 0) selected @endif>Não</option>
                     </select>
-
                 </div>
+
 
                 <div class="form-group">
                     <label>Alimentos preferidos:</label>
@@ -259,19 +257,20 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Como o(a) estudante aprende melhor?</label>
-                    <div class="checkbox-group">
-                        <input type="checkbox" name = "r_visual"><label for="r_visual">Recurso visual</label>
-                        <input type="checkbox" name = "r_auditivo"><label for="r_auditivo">Recurso auditivo</label>
-                        <input type="checkbox" name = "m_concreto"><label for="m_concreto">Material concreto</label>
-                        <input type="checkbox" name = "o_outro"><label for="o_outro">Outro - identificar</label>
-                    </div>
+    <label>Como o(a) estudante aprende melhor?</label>
+    <div class="checkbox-group">
+        <input type="checkbox" name="r_visual" @if($perfil->aprende_visual_04) checked @endif><label for="r_visual">Recurso visual</label>
+        <input type="checkbox" name="r_auditivo" @if($perfil->recurso_auditivo_04) checked @endif><label for="r_auditivo">Recurso auditivo</label>
+        <input type="checkbox" name="m_concreto" @if($perfil->material_concreto_04) checked @endif><label for="m_concreto">Material concreto</label>
+        <input type="checkbox" name="o_outro" @if($perfil->outro_identificar_04) checked @endif><label for="o_outro">Outro - identificar</label>
+    </div>
 
-                    <div class="form-group">
-                        <label></label>
-                        <textarea rows="3" name="outro_identificar">{{$perfil->descricao_outro_identificar_04 }}</textarea>
-                    </div>
-                </div>
+    <div class="form-group">
+        <label></label>
+        <textarea rows="3" name="outro_identificar">{{$perfil->descricao_outro_identificar_04 }}</textarea>
+    </div>
+</div>
+
 
                 <div class="form-group">
                     <label>Gosta de atividades em grupo ou prefere trabalhar sozinho?</label>

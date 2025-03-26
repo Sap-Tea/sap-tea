@@ -212,7 +212,7 @@ class InserirPerfilEstudante extends Controller
                 $PerfilFamilia = PerfilFamilia::create([
                      'expectativa_05' =>$request->input('expectativas_familia'),
                      'estrategia_05' => $request->input('estrategias_familia'),
-                     'crise_esta_05'=>$request->input('estrategiaudante_05') ,
+                     'crise_esta_05'=>$request->input('crise_estresse') ,
                      
                       'fk_id_aluno'=>$alunoId 
 

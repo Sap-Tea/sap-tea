@@ -38,8 +38,9 @@ class AtualizaPerfinEstudante extends Controller
         INNER JOIN comunicacao AS com 
         ON pre.fk_id_aluno = com.fk_alu_id 
         INNER JOIN perfil_familia AS pfa 
-        ON pfa.fk_id_aluno = com.fk_alu_id
-    ");
+        ON pfa.fk_id_aluno = com.fk_alu_id 
+        WHERE pes.fk_alu_id = ?
+    ", [$id]);
     
 
     // Redireciona para a view com os dados

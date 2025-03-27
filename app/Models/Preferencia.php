@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Preferencia extends Model
 {
     protected $table = 'preferencia';
+    protected $primaryKey = 'id_preferencia';
+
     protected $fillable=['auditivo_04','visual_04','tatil_04','outros_04','maneja_04',
 'asa_04','alimentos_pref_04','alimento_evita_04',
 'contato_pc_04','reage_contato','interacao_escola_04','interesse_atividade_04',

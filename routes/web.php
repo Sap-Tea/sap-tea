@@ -12,7 +12,9 @@ use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\AtualizaPerfinEstudante;
 use App\Http\Controllers\ImprimeAlunoController;
 use App\Http\Controllers\InserirPerfilEstudante;
+use App\Http\Controllers\AtualizacaoController;
 use App\Http\Controllers\AtualizacaoPerfilController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,9 +69,15 @@ Route::group(['prefix' => 'professor'], function () {
 Route::get('/alunos/{id}', [AlunoController::class, 'index'])->name('alunos.index');
 
 
+
  Route::get('/perfil-estudante/{id}', [PerfilEstudanteController::class, 'mostrar'])
 ->name('perfil.estudante.mostrar');
-Route::get('atualizaperfil/{id}',[AtualizaPerfinEstudante::class,'AtualizaPerfil'])->name('atualiza.perfil.estudante');
+
+Route::get('/visualizar-perfil/{id}', [AtualizaPerfinEstudante::class, 'atualizaPerfil'])->name('visualizar.perfil');
+
+
+
+Route::post('/atualizaperfil/{id}', [AtualizacaoPerfilController::class, 'AtualizaPerfil'])->name('atualiza.perfil.estudante');
 Route::post('/inserir_perfil', [InserirPerfilEstudante::class, 'inserir_perfil_estudante'])->name('inserir_perfil');
 Route::get('/imprime-aluno', [ImprimeAlunoController::class, 'imprimeAluno'])->name('imprime_aluno');
 

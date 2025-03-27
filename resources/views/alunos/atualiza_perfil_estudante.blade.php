@@ -16,6 +16,7 @@
 
 <div class="container">
     <h2>I - Perfil do Estudante</h2>
+
     <form method="POST" action="{{ route('atualiza.perfil.estudante', ['id' => $dados[0]->alu_id]) }}">
         @csrf
 
@@ -287,6 +288,8 @@
                     <textarea rows="3" name="interesse_tarefa">{{$perfil->prefere_ts_04 }}</textarea>
                 </div>
 
+
+                
                 <h2 class="comunicacao-section">V - Informações da família</h2>
 
                 <div class="form-group">
@@ -308,7 +311,7 @@
 
             <div class="button-group">
                 <button type="submit" class="btn btn-primary">Confirma alteração</button>
-                <a href="{{ route('atualizar.perfil) }}" class="btn btn-danger">Cancelar</a>
+                <a href="{{ route('index') }}" class="btn btn-danger">Cancelar</a>
                 <button type="button" class="pdf-button">Gerar PDF</button>
             </div>
         </form>

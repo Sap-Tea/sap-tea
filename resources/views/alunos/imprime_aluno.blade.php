@@ -72,7 +72,7 @@ document.getElementById('pesquisarBtn').addEventListener('click', function(event
                                     style="background-color: #e67e22; border-color: #d35400;"
                                     disabled>Visualiza Perfil</button>
                         @else
-                            <a href="{{ route('atualiza.perfil.estudante', ['id' => $aluno->alu_id]) }}" 
+                            <a href="{{ route('visualizar.perfil', ['id' => $aluno->alu_id]) }}" 
                                class="btn btn-primary btn-sm">Visualiza Perfil</a>
                         @endif
                     </td>

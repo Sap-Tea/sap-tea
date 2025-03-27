@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PerfilEstudante extends Model
 {
+    protected $primaryKey = 'id_perfil';
+
     protected $table = 'perfil_estudante';
     protected $fillable = ['diag_laudo', 'cid','nome_medico','data_laudo',
     'nivel_suporte','uso_medicamento','quais_medicamento','nec_pro_apoio','loc_01','loc_02',
